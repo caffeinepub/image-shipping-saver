@@ -347,6 +347,10 @@ export default function App() {
     ? Math.min(...platformResults.map((p) => p.charge))
     : null;
 
+  const meeshoCharge = isValidWeight
+    ? getChargeForWeight(PLATFORMS[0].rates, weightGrams)
+    : null;
+
   return (
     <div className="min-h-screen bg-background font-sans">
       <Toaster position="top-right" />
@@ -359,7 +363,7 @@ export default function App() {
               <Package className="w-4 h-4 text-white" />
             </div>
             <span className="font-bold text-lg text-foreground tracking-tight">
-              ShipSaver
+              ecomkashu
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-8">
@@ -893,7 +897,7 @@ export default function App() {
                               {r.level.labelHindi}
                             </p>
                           </div>
-                          <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center justify-between mb-2">
                             <span className="text-sm font-bold text-foreground">
                               {formatBytes(r.size)}
                             </span>
@@ -901,6 +905,31 @@ export default function App() {
                               -{r.percent}%
                             </Badge>
                           </div>
+                          {/* Shipping charge below image */}
+                          {isValidWeight && meeshoCharge !== null ? (
+                            <div className="flex items-center justify-between mb-3 px-2 py-1.5 rounded-lg bg-green-50 border border-green-200">
+                              <span className="text-xs text-green-700 font-medium">
+                                Meesho Shipping
+                              </span>
+                              <span className="text-sm font-extrabold text-green-700">
+                                ₹{meeshoCharge}
+                              </span>
+                            </div>
+                          ) : (
+                            <div className="mb-3">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  document
+                                    .getElementById("calculator")
+                                    ?.scrollIntoView({ behavior: "smooth" });
+                                }}
+                                className="block w-full text-center text-xs text-muted-foreground hover:text-blue-accent transition-colors cursor-pointer"
+                              >
+                                Weight enter karo →
+                              </button>
+                            </div>
+                          )}
                           <Button
                             data-ocid={`results.delete_button.${idx + 1}`}
                             size="sm"
@@ -996,7 +1025,7 @@ export default function App() {
       >
         <div className="max-w-4xl mx-auto">
           <h2 className="text-center text-2xl font-bold text-foreground mb-10">
-            Why ShipSaver?
+            Why ecomkashu?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -1039,7 +1068,7 @@ export default function App() {
                 <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center">
                   <Package className="w-4 h-4 text-white" />
                 </div>
-                <span className="font-bold text-white">ShipSaver</span>
+                <span className="font-bold text-white">ecomkashu</span>
               </div>
               <p className="text-sm text-white/60">
                 E-commerce sellers के लिए free image compression + shipping
@@ -1093,7 +1122,7 @@ export default function App() {
           </div>
           <div className="border-t border-white/10 pt-6 text-center">
             <p className="text-sm text-white/50">
-              © {new Date().getFullYear()} ShipSaver. Built with ❤️ using{" "}
+              © {new Date().getFullYear()} ecomkashu. Built with ❤️ using{" "}
               <a
                 href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
                 target="_blank"
