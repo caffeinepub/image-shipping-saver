@@ -63,28 +63,28 @@ const PLATFORMS = [
     color: "text-purple-700",
     bg: "bg-purple-50",
     border: "border-purple-200",
-    rates: { s500: 40, s1000: 58, s2000: 78, s5000: 108 },
+    rates: { s500: 50, s1000: 65, s2000: 85, s5000: 115 },
   },
   {
     name: "Flipkart",
     color: "text-blue-700",
     bg: "bg-blue-50",
     border: "border-blue-200",
-    rates: { s500: 45, s1000: 65, s2000: 85, s5000: 115 },
+    rates: { s500: 55, s1000: 72, s2000: 92, s5000: 122 },
   },
   {
     name: "Amazon",
     color: "text-orange-700",
     bg: "bg-orange-50",
     border: "border-orange-200",
-    rates: { s500: 42, s1000: 62, s2000: 82, s5000: 112 },
+    rates: { s500: 52, s1000: 68, s2000: 88, s5000: 118 },
   },
   {
     name: "Shiprocket",
     color: "text-red-700",
     bg: "bg-red-50",
     border: "border-red-200",
-    rates: { s500: 38, s1000: 55, s2000: 75, s5000: 105 },
+    rates: { s500: 50, s1000: 65, s2000: 82, s5000: 110 },
   },
 ];
 
